@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Clickalatte</title>
+  <!-- Tell the browser to be responsive to screen width -->
+  <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+  <!-- Bootstrap 3.3.6 -->
+  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
+  <!-- Ionicons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ionicons/2.0.1/css/ionicons.min.css">
+  <!-- Theme style -->
+  <link rel="stylesheet" href="dist/css/AdminLTE.min.css">
+  <!-- AdminLTE Skins. Choose a skin from the css/skins
+       folder instead of downloading all of them to reduce the load. -->
+  <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+  <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+
+<script type="text/javascript">
+
+
+
+
+</script>
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
+
+
+</head>
+<body class="hold-transition skin-blue sidebar-mini" onload="appLoad()">
+
+
+
+<!-- Site wrapper -->
+<div class="wrapper">
+  <div class="bubble" id="findcoffeetooltip" style="display:none; background-color: rgb(0, 160, 255); border-color: #000000; width: 80%; max-width:270px; border-width: 5px; padding:20px; color:#FFFFFF; z-index:10000; height:150px; position:fixed; top:120px; right:10%;">
+    <div class="pointer" style="content: '';position: absolute;border-style: solid;border-width: 0 11px 27px;border-color: #00A0FF transparent;display: block;width: 0;z-index: 10001;top: -27px;left: 101px;">
+    </div>
+    <div class="pointerBorder" style="content: '';position: absolute;border-style: solid;border-width: 0 13px 29px;border-color: #000000 transparent;display: block;width: 0;z-index: 10000;top: -32px;left: 99px;">
+
+    </div>  You can search by name of the store or by it's location. Otherwise, click the Pin icon to search for nearby stores<br><br>
+
+    <button class="form-control btn-success" onclick="$('#findcoffeetooltip').fadeOut(200);">Got it</button>
+  </div>
+
+  <header class="main-header">
+    <!-- Logo -->
+    <a href="index2.html" class="logo">
+
+      <!-- mini logo for sidebar mini 50x50 pixels -->
+      <span class="logo-mini"><i class="fa fa-coffee"></i></span>
+      <!-- logo for regular state and mobile devices -->
+      <span class="logo-lg" id="appTitle">CLICKALATTE</span>
+    </a>
+    <!-- Header Navbar: style can be found in header.less -->
+    <nav class="navbar navbar-static-top">
+      <!-- Sidebar toggle button-->
+      <div class="backicon" role="button" id="backbutton"> <i class="fa fa-arrow-left"></i></div>
+
+      <a href="#" class="sidebar-toggle" data-toggle="offcanvas" role="button">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </a>
+
+      <div class="navbar-custom-menu" id="searchbar" style="margin-top:8px; margin-right:8px; max-width:70%;">
+        <div class="input-group" style="">
+                <input type="text" class="form-control" placeholder="Search Stores by Name or Location...">
+                <span class="input-group-addon"><i class="fa fa-search"></i></span>
+                <span class="input-group-addon" onclick="findCoffeeMyLocation()"><i class="fa fa-map-pin"></i></span>
+              </div>
+      </div>
+    </nav>
+  </header>
+
+  <!-- =============================================== -->
+
+  <!-- Left side column. contains the sidebar -->
+  <aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+      <!-- Sidebar user panel -->
+            <!-- sidebar menu: : style can be found in sidebar.less -->
+      <ul class="sidebar-menu">
+        <li class="header">MAIN NAVIGATION</li>
+        
+        <li><a onclick="loadScreen('dashboard')"><i class="fa fa-dashboard"></i> <span>Daily Deals</span></a></li>
+        <li><a onclick="findCoffeeTooltip()"><i class="fa fa-search"></i> <span>Find Coffee</span></a></li>
+        <li><a><i class="fa fa-coffee"></i> <span>My Orders</span></a></li>
+        <li><a><i class="fa fa-user"></i> <span>My Account</span></a></li>
+        
+        <li class="header">LABELS</li>
+        <li><a href="#"><i class="fa fa-circle-o text-red"></i> <span>Important</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> <span>Warning</span></a></li>
+        <li><a href="#"><i class="fa fa-circle-o text-aqua"></i> <span>Information</span></a></li>
+      </ul>
+    </section>
+    <!-- /.sidebar -->
+  </aside>
+
+  <!-- =============================================== -->
+
+
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" id="clicka_dashboard" style="display:none;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        Clickalatte Daily Deals
+      </h1>
+      
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <!-- Default box -->
+      <div class="box">
+        <div class="box-header with-border">
+          <h3 class="box-title">Deal here</h3>
+
+         
+        </div>
+        <div class="box-body">
+          Info about deal<br><br>
+          <button class="form-control btn-success">Redeem!</button>
+        </div>
+        <!-- /.box-body -->
+        
+        <!-- /.box-footer-->
+      </div>
+      <!-- /.box -->
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" id="clicka_signin" style="display:none;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <h1>
+        
+      </h1>
+      
+    </section>
+
+    <!-- Main content -->
+  <section class="content" id="x_content" style="width:95%; max-width:600px; padding-top:18%;">
+          <div class="box box-info">
+                <div class="box-header with-border">
+                  <h3 class="box-title">Welcome to Clickalatte</h3>
+                </div><!-- /.box-header -->
+                <!-- form start -->
+                <form class="form-horizontal">
+                  <div class="box-body">
+                    <div class="form-group">
+                      <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+                      <div class="col-sm-10">
+                        <input type="email" class="form-control" id="inputEmail3" placeholder="Email">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+                      </div>
+                    </div>
+                    <div class="form-group">
+                      <div class="col-sm-offset-2 col-sm-10">
+                        <div class="checkbox">
+                          <label>
+                            <input type="checkbox"> Remember me
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div><!-- /.box-body -->
+                  <div class="box-footer">
+                    <button type="button" class="btn btn-default" onclick="mySession()">INFO</button> <a href="#" onclick="localStorage.removeItem('regauth_token')">DEL TOKEN</a> | <a href="#" onclick="alert(localStorage.getItem('regauth_token'))">SEE TOKEN</a>
+                    <button type="button" class="btn btn-info pull-right" onclick="signOn()">Sign in</button>
+                  </div><!-- /.box-footer -->
+                </form>
+              </div>
+            </section>
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+
+
+
+
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" id="clicka_storelist" style="display:none;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+    
+    </section>
+
+    <!-- Main content -->
+    <section class="content" id="coffeestorelist">
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+
+
+
+
+
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" id="clicka_storemenu" style="display:none;">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      
+      
+    </section>
+
+    <!-- Main content -->
+    <section class="content" id="storemenulist">
+
+        
+
+    </section>
+    <!-- /.content -->
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+
+
+
+
+<!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper" id="clicka_addproduct" style="display:none;">
+    <!-- Content Header (Page header) -->
+     <form id="productOrder"><section class="content-header">
+      <h1>
+        Item Price: $<span id="itemPrice"></span>
+      </h1>
+      <input type="hidden" id="optIds" value="">
+      <input type="hidden" id="basePrice" value="">
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+
+      <div class="row" id="productoptions">
+      
+
+         <div class="col-lg-3 col-xs-6" style="margin-bottom:20px;">
+          <!-- small box -->
+          <div class="small-box bg-yellow">
+            <div class="inner">
+              <h3><select class="form-control"><option>Small</option><option>Medium</option><option>Large</option></select></h3>
+
+              <p>size</p>
+              
+            </div>
+            
+            
+          </div>
+        </div>
+
+      </div>
+
+      <button type="button" class="btn btn-block btn-success btn-lg">Add to Order</button>
+        
+
+    </section>
+    <!-- /.content --></form>
+  </div>
+  <!-- /.content-wrapper -->
+
+
+
+
+
+
+
+  
+
+  <!-- Control Sidebar -->
+  
+  <!-- /.control-sidebar -->
+  <!-- Add the sidebar's background. This div must be placed
+       immediately after the control sidebar -->
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+<script src="plugins/iCheck/icheck.min.js"></script>
+<!-- jQuery 2.2.0 -->
+<script src="plugins/jQuery/jQuery-2.2.0.min.js"></script>
+<!-- Bootstrap 3.3.6 -->
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<!-- SlimScroll -->
+<script src="plugins/slimScroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="plugins/fastclick/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="dist/js/app.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="dist/js/demo.js"></script>
+</body>
+</html>
