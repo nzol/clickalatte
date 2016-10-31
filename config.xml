@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns   = "http://www.w3.org/ns/widgets"
+        xmlns:gap   = "http://phonegap.com/ns/1.0"
+        id          = "com.nzol.clickalatte"
+        versionCode = "2016.10.31" 
+        version     = "2016.10.31" >
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Clickalatte</name>
+
+    <description>
+       End User Clickalatte App
+    </description>
+
+    <author href="https://twitter.com/TechReportNZ" email="jordan@nzol.info">
+        Jordan Smith
+    </author>
+
+    <plugin name="cordova-plugin-whitelist" />
+
+    <gap:platform name="ios" />
+    <gap:platform name="android" />
+    <gap:platform name="winphone" />
+
+    <allow-intent href="http://172.18.1.120" />
+    <access origin="http://172.18.1.120" />
+
+    <platform name="android" >
+      <preference name="orientation" value="landscape" />
+    </platform>
+
+</widget>
